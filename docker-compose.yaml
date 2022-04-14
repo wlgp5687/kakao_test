@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  # postgresql
+  rdb:
+    image: postgres:13.1-alpine
+    volumes:
+      - "./data/rdb:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_USER: "kakao"
+      POSTGRES_PASSWORD: "kakao1!"
+      POSTGRES_DB: "kakao"
+    ports:
+      - "5432:5432"
