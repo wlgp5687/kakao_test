@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Input, Button, Select, Modal, Transfer } from "antd";
+import { Cookies } from "react-cookie";
 import axios from "axios";
+
+const cookies = new Cookies();
 
 const Data = [
 	{ key: 1, title: "황순환 대표" },
@@ -51,8 +54,14 @@ function AdminPage() {
 	};
 
 	const api = async () => {
-		let res = await axios.get("http://localhost:4000/approver");
-		setGetData(res.data);
+		await axios({
+			method: "get",
+			url: "http://localhost:4000/approver",
+			headers: {
+				"Content-Type": "application/json",
+				"x-access-token": cookies.get("x-access-token"),
+			},
+		}).then((res) => setGetData(res.data));
 	};
 
 	const postDocument = async () => {};

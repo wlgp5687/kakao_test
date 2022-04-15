@@ -9,15 +9,20 @@ const router = require("./router");
 
 const app = express();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: ["http://localhost:3000"],
+		credentials: true,
+	})
+);
 
 app.use(bodyParser.json({ limit: "1mb" }));
 app.use(bodyParser.urlencoded({ limit: "1mb", extended: false }));
 
 app.use("/", router);
 
-const port = process.env.PORT;
+const port = process.env.BACKEND_PORT;
 
 app.listen(port, () => {
-	console.log(`server is listening at localhost:${process.env.PORT}`);
+	console.log(`server is listening at localhost:${process.env.BACKEND_PORT}`);
 });

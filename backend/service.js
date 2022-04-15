@@ -40,12 +40,12 @@ const encodeToken = async (payload) => {
 
 // 토큰 해체
 const decodeToken = async (req) => {
-	// const token =
-	// 	req.headers["x-access-token"] || req.query.token || req.cookies.token;
-	// if (!token) throwError("JsonWebTokenError", 400);
+	const token = req.headers["x-access-token"];
+	//  || req.cookies.token;
+	if (!token) throwError("JsonWebTokenError", 400);
 
-	const token =
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjF9LCJpYXQiOjE2NDk5MDYxNTIsImV4cCI6MTY1MDUxMDk1MiwiaXNzIjoia2FrYW90ZXN0ZXIifQ.2l2PVkfwUO_LNlgRJACFcx7a_QgWegqLXufJGYyiwdQ";
+	// const token =
+	// 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjF9LCJpYXQiOjE2NDk5MDYxNTIsImV4cCI6MTY1MDUxMDk1MiwiaXNzIjoia2FrYW90ZXN0ZXIifQ.2l2PVkfwUO_LNlgRJACFcx7a_QgWegqLXufJGYyiwdQ";
 
 	let decodedToken = null;
 
